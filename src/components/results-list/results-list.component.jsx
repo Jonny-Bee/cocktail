@@ -35,7 +35,7 @@ const ResultsList = (props) => {
 
     return(
         
-          <Container fluid='md'>
+          <Container fluid='md' className='mt-5'>
             <Row lg = {4} md={3} sm={2} xs={1}>
             {drinks.map((drink) => (
             

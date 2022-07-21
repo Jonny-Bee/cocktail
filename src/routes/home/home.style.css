@@ -1,5 +1,5 @@
 .big-icon{
-    font-size: 25vw;
+    font-size: 200px;
     margin-bottom: .5em;
 }
 .white-t{
@@ -8,4 +8,7 @@
 .fillScreen{
     height: 85vh;
     background-color: rgb(65, 0, 0);
+}
+.max-w800{
+    
 }

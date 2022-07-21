@@ -43,7 +43,7 @@ const Recipe = (props) =>{
             i++;
         }
         return(
-            <Container >
+            <Container className='mt-5'>
             <Card className='mb-5 '>
                 <Card.Img variant="right" src={selectedRecipe.strDrinkThumb} />
                 <Card.Body>

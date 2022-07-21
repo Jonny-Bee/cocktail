@@ -8,7 +8,7 @@ const Home = (props) =>{
     return(
         <div className='text-center fillScreen white-t'>
             <Container className='mt-5' >
-           < Row lg = {1} md={1} sm={1} xs={1}>
+           < Row lg = {1} md={1} sm={1} xs={1} className='max-w800'>
            <Col><h1 className='mb-5'>Fresh Drink Ideas</h1></Col>
             <Col><FontAwesomeIcon icon={faMartiniGlass} size='lg' className='big-icon white-t'/></Col>
             <Col><h1>Just a tap away!</h1></Col>
