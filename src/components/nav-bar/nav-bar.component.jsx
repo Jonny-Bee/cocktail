@@ -36,7 +36,7 @@ const TopNav = (props) =>{
     const ingredients = ['Gin','Vodka','Whiskey','Rum','Tequila','Brandy','Coconut','Lime','Soda','Tonic',];
     
     return (
-        <Navbar sticky='top' bg="danger" expand="lg" variant='dark' className='mb-5 p-3'>
+        <Navbar sticky='top'  expand="lg" variant='dark' className='mb-5 p-3 deep-red'>
           <Container>
           
             <Navbar.Brand><FontAwesomeIcon icon={faMartiniGlassCitrus} size='lg' className='mr-1'/> Thirsty</Navbar.Brand>
