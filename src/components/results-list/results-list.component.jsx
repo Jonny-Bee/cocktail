@@ -1,4 +1,4 @@
-import { getIngredientDetails, searchCockTailsByLetter, searchCockTailsByIngredient, getCocktailById, searchCockTails } from '../../IO/dataIO';
+import {  searchCockTailsByLetter, searchCockTailsByIngredient, searchCockTails } from '../../IO/dataIO';
 import { useState, useEffect, useContext } from 'react';
 
 import PreviewCard from '../previewcard/preview-card.component';

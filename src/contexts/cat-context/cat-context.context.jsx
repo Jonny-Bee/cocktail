@@ -1,5 +1,4 @@
 import { createContext, useEffect, useState} from 'react';
-import { getIngredientDetails, searchCockTailsByLetter, searchCockTailsByIngredient, getCocktailById } from '../../IO/dataIO';
 import { useNavigate } from "react-router-dom";
 
 export const CatContext = createContext({

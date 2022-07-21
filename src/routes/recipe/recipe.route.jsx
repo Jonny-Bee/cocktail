@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import { Container, InputGroup } from "react-bootstrap";
+import { Container} from "react-bootstrap";
 import { CatContext } from "../../contexts/cat-context/cat-context.context";
 import { Card } from "react-bootstrap";
 import Row from 'react-bootstrap/Row';
