@@ -43,8 +43,8 @@ const Recipe = (props) =>{
             i++;
         }
         return(
-            <Container>
-            <Card>
+            <Container >
+            <Card className='mb-5 '>
                 <Card.Img variant="right" src={selectedRecipe.strDrinkThumb} />
                 <Card.Body>
                     <Card.Title>{selectedRecipe.strDrink}</Card.Title>
@@ -66,7 +66,7 @@ const Recipe = (props) =>{
                 </Card.Body>
             </Card>
                 
-            <Card>
+            <Card className='mb-5 '>
                 <Card.Body>
                     <Card.Title>Method</Card.Title>
                     <Card.Text>
