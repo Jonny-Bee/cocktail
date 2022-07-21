@@ -1,0 +1,11 @@
+.big-icon{
+    font-size: 25vw;
+    margin-bottom: .5em;
+}
+.white-t{
+    color:white;
+}
+.fillScreen{
+    height: 85vh;
+    background-color: rgb(65, 0, 0);
+}
