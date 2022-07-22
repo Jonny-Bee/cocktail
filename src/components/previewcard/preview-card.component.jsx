@@ -1,4 +1,4 @@
-import { Card , Button, CardImg} from "react-bootstrap";
+import { Card , Button} from "react-bootstrap";
 import './preview-card.style.css';
 import { CatContext } from "../../contexts/cat-context/cat-context.context";
 import { useContext } from "react";

@@ -1,14 +1,23 @@
 .big-icon{
-    font-size: 200px;
-    margin-bottom: .5em;
+    font-size: 10vw;
+    margin-bottom: .3em;
 }
 .white-t{
+    color:rgb(39, 185, 166);
+}
+
+
+.banner{
+    background-image: url('./banner.jpeg');
+    background-size: cover;
+    background-position: right;
+    min-height: 570px;
+    overflow: hidden;
+}
+.banner-text{
     color:white;
-}
-.fillScreen{
-    height: 85vh;
-    background-color: rgb(65, 0, 0);
-}
-.max-w800{
-    
+    padding:30px;
+    font-size: 3em;
+    background-color: rgba(0, 0, 0, .3);
+    margin-top:3em;
 }
