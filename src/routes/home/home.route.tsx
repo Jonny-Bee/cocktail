@@ -1,10 +1,10 @@
-import { Container } from "react-bootstrap";
+
+import React  from 'react';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import {  faMartiniGlass, faBeerMugEmpty, faChampagneGlasses} from '@fortawesome/free-solid-svg-icons';
+
 import './home.style.css'
-const Home = (props) =>{
+const Home = () =>{
     return(
         <div >
             <div className='banner'>

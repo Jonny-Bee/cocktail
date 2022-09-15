@@ -1,24 +1,28 @@
-import {  searchCockTailsByLetter, searchCockTailsByIngredient, searchCockTails } from '../../IO/dataIO';
+import {  searchCockTailsByLetter, searchCockTailsByIngredient, searchCockTails, DrinkRecipe } from '../../IO/dataIO';
 import { useState, useEffect, useContext } from 'react';
-
+import React, { Component }  from 'react';
 import PreviewCard from '../previewcard/preview-card.component';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import { CatContext } from '../../contexts/cat-context/cat-context.context';
 
-const ResultsList = (props) => {
+
+
+const ResultsList = () => {
 
     const {searchField  ,searchType} = useContext(CatContext);
-    const [drinks, setDrinks] = useState([]);
+    const [drinks, setDrinks] = useState<DrinkRecipe[]>([]);
 
     useEffect(() => {
-    const LoadDrinks = (cat,stype) => {
+    const LoadDrinks = (cat:string,stype:string) => {
 
-        const f = (data) =>{ 
-          console.log(data.drinks);
-          if(data.drinks != null){
-            setDrinks(data.drinks);
+        const f = (data:DrinkRecipe[]) =>{ 
+          console.log('===========================');
+          console.log(data);
+          console.log('===========================');
+          if(data != null){
+            setDrinks(data);
             console.log('loaded');
           }
         };

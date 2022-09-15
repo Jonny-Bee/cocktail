@@ -1,4 +1,5 @@
 import './footer.styles.css'
+import React, { Component }  from 'react';
 const MainFooter = () =>{
     return(
         <footer className="bottom-container mt-auto">
