@@ -33,7 +33,7 @@ const ResultsList = () => {
         else
             searchCockTails(cat,f);
     };
-    return LoadDrinks(searchField,searchType);
+    return LoadDrinks(searchField!,searchType!);
   },[searchField , searchType]);
 
 

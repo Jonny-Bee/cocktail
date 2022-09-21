@@ -1,4 +1,4 @@
-import React, { createContext, useEffect, useState, FC, ReactNode} from 'react';
+import React, { createContext, useEffect, useState, FC, ReactNode, useReducer, Reducer} from 'react';
 
 import { useNavigate } from "react-router-dom";
 import type {DrinkRecipe} from '../../IO/dataIO';
@@ -6,14 +6,14 @@ import type {DrinkRecipe} from '../../IO/dataIO';
 
 // define typed interface for context
 interface IcatContextProps {
-    searchField:string,
-    searchType:string,
+    searchField?:string,
+    searchType?:string,
     selectedRecipe?:DrinkRecipe,
     setRecipe:(a:DrinkRecipe) => void,
     setSearch:(cat:string,stype:string) => void
 }
 
-// defined type context prover properties ! important
+// define type context provider properties ! important
 interface IProviderProps {
     children:ReactNode
 }
@@ -26,20 +26,50 @@ export const CatContext = createContext<IcatContextProps>({
     setSearch:() => {}
 });
 
+export const CatContextActionTypes = {
+    SET_SEARCH:'SET_SEARCH_FIELD',
+    SELECT_RECIPE:'SELECT_RECIPE'
+}
 
+type catState = {
+    searchField?:string,
+    searchType?:string,
+    selectedRecipe?:DrinkRecipe
+}
+    
+
+export type CatContextAction = {
+    payload: catState,
+    actionType:string
+}
+
+const catReducer:Reducer<catState,CatContextAction> = (state:catState, action:CatContextAction) =>{
+
+    switch(action.actionType)
+    {
+        case CatContextActionTypes.SET_SEARCH:
+            return {...state,...action.payload};
+        case CatContextActionTypes.SELECT_RECIPE:
+            return {...state,...action.payload};
+        default :
+            throw new Error(`unhandled type ${action.actionType}`)
+    }
+}
+
+const InitialState = {
+    searchField:'',
+    searchType:'letter'
+}
 export const CatProvider: FC<IProviderProps> = ({ children }) => {
     
-   
-    const [searchField, setSearchField] = useState<string>(localStorage.getItem('searchfield') || 'a');
-    const [searchType, setSearchType] = useState<string>(localStorage.getItem('searchtype') || 'letter');
-    const [selectedRecipe , updateRecipe] = useState<DrinkRecipe>(JSON.parse(localStorage.getItem('recipe_') || '') || null);
-
+    const [{searchField , searchType, selectedRecipe} , dispatch] = useReducer(catReducer, InitialState)
+ 
     useEffect(() => {
-        localStorage.setItem('searchfield',searchField) ;
+        localStorage.setItem('searchfield',searchField!) ;
     },[searchField]);
 
     useEffect(() => {
-        localStorage.setItem('searchtype',searchType) ;
+        localStorage.setItem('searchtype',searchType!) ;
     },[searchType]);
 
     useEffect(() => {
@@ -50,15 +80,13 @@ export const CatProvider: FC<IProviderProps> = ({ children }) => {
     const navigate = useNavigate();
 
     const setRecipe = (recipe:DrinkRecipe) =>{
-        updateRecipe(recipe);
-        console.log(recipe);
+        dispatch({actionType:CatContextActionTypes.SELECT_RECIPE,payload:{selectedRecipe:recipe}});
         navigate('/recipe');
+        
     }
     
     const setSearch =( cat:string,stype:string) =>{
-        console.log('set search params : ' + cat + ' : ' + stype)
-        setSearchField(cat);
-        setSearchType(stype);
+        dispatch({actionType:CatContextActionTypes.SET_SEARCH,payload:{searchType:stype,searchField:cat}});
         navigate('/list');
     }
 
