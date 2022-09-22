@@ -64,13 +64,6 @@ export const CatProvider: FC<IProviderProps> = ({ children }) => {
     
     const [{searchField , searchType, selectedRecipe} , dispatch] = useReducer(catReducer, InitialState)
  
-    useEffect(() => {
-        localStorage.setItem('searchfield',searchField!) ;
-    },[searchField]);
-
-    useEffect(() => {
-        localStorage.setItem('searchtype',searchType!) ;
-    },[searchType]);
 
     useEffect(() => {
         console.log('saved recipe')
