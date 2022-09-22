@@ -1,11 +1,10 @@
 import { Card , Button} from "react-bootstrap";
 import './preview-card.style.css';
-import { CatContext } from "../../contexts/cat-context/cat-context.context";
-import { useContext } from "react";
+
 import { Badge } from "react-bootstrap";
 import { DrinkRecipe } from "../../IO/dataIO";
-import React, { Component }  from 'react';
-import { useAppSelector, useAppDispatch } from '../../store/hooks';
+import React from 'react';
+import {  useAppDispatch } from '../../store/hooks';
 import { setRecipe } from '../../store/recipe.slice'; 
 import { useNavigate } from 'react-router-dom';
 

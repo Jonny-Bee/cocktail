@@ -1,4 +1,4 @@
-import {createSlice, PayloadAction} from '@reduxjs/toolkit';
+import {createSlice} from '@reduxjs/toolkit';
 import { DrinkRecipe } from '../IO/dataIO';
 
 interface recipeState {

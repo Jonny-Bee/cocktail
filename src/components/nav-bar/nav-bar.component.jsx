@@ -12,7 +12,7 @@ import './nav-bar.styles.css';
 import { Form } from 'react-bootstrap';
 import {Button} from 'react-bootstrap';
 import React from 'react';
-import { useAppSelector, useAppDispatch } from '../../store/hooks';
+import { useAppDispatch } from '../../store/hooks';
 import { setSearch } from '../../store/search.slice'; 
 import { useNavigate } from 'react-router-dom';
 

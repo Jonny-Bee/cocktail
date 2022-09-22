@@ -1,6 +1,6 @@
 
 import './App.css';
-import React, { Component }  from 'react';
+import React  from 'react';
 import { Routes, Route } from 'react-router';
 import Home from './routes/home/home.route';
 import NavigationBar from './routes/navigation/navigation.route';

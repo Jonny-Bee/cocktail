@@ -5,7 +5,7 @@ import PreviewCard from '../previewcard/preview-card.component';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
-import { useAppSelector, useAppDispatch } from '../../store/hooks';
+import { useAppSelector } from '../../store/hooks';
 
 
 const ResultsList = () => {
