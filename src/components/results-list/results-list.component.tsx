@@ -1,29 +1,27 @@
 import {  searchCockTailsByLetter, searchCockTailsByIngredient, searchCockTails, DrinkRecipe } from '../../IO/dataIO';
-import { useState, useEffect, useContext } from 'react';
-import React, { Component }  from 'react';
+import { useState, useEffect } from 'react';
+import React  from 'react';
 import PreviewCard from '../previewcard/preview-card.component';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
-import { CatContext } from '../../contexts/cat-context/cat-context.context';
-
+import { useAppSelector, useAppDispatch } from '../../store/hooks';
 
 
 const ResultsList = () => {
 
-    const {searchField  ,searchType} = useContext(CatContext);
+    const searchField = useAppSelector((state) => state.search.searchField);
+    const searchType = useAppSelector((state) => state.search.searchType);
     const [drinks, setDrinks] = useState<DrinkRecipe[]>([]);
-
+    
     useEffect(() => {
+      
     const LoadDrinks = (cat:string,stype:string) => {
 
         const f = (data:DrinkRecipe[]) =>{ 
-          console.log('===========================');
-          console.log(data);
-          console.log('===========================');
           if(data != null){
             setDrinks(data);
-            console.log('loaded');
+            
           }
         };
         if(stype === 'letter')
@@ -34,6 +32,7 @@ const ResultsList = () => {
             searchCockTails(cat,f);
     };
     return LoadDrinks(searchField!,searchType!);
+
   },[searchField , searchType]);
 
 

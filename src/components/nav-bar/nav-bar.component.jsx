@@ -4,19 +4,23 @@ import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faMartiniGlassCitrus } from '@fortawesome/free-solid-svg-icons';
-import { CatContext } from '../../contexts/cat-context/cat-context.context';
+
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
-import { useContext } from 'react';
+
 import './nav-bar.styles.css';
 import { Form } from 'react-bootstrap';
 import {Button} from 'react-bootstrap';
-import React, { Component }  from 'react';
+import React from 'react';
+import { useAppSelector, useAppDispatch } from '../../store/hooks';
+import { setSearch } from '../../store/search.slice'; 
+import { useNavigate } from 'react-router-dom';
 
-const TopNav = (props) =>{
+const TopNav = () =>{
 
-    const {setSearch} = useContext(CatContext);
     
+    const dispatch = useAppDispatch();
+    const navigate = useNavigate();
 
     const handleSubmit = (event) => {
         const form = event.currentTarget;
@@ -27,10 +31,17 @@ const TopNav = (props) =>{
         }
         else{
             event.preventDefault();
-            setSearch(event.target.elements.search.value,'search');
+            dispatch(setSearch({searchType:'search', searchField:event.target.elements.search.value}))
+            //setSearch(event.target.elements.search.value,'search');
+            navigate('/list');
         }
         
       };
+
+      const setSearchProps =(  sField, sType) => {
+        dispatch(setSearch({searchField:sField,searchType:sType}))
+        navigate('/list');
+      }
 
     const letters = ['a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z'];
     const ingredients = ['Gin','Vodka','Whiskey','Rum','Tequila','Brandy','Coconut','Lime','Soda','Tonic',];
@@ -47,7 +58,7 @@ const TopNav = (props) =>{
                 <Row lg = {1} md={2} sm={3} xs={4}>
                 {letters.map((ltr,k) => (
             
-                    <Col key={k}><NavDropdown.Item key={ltr+k}  onClick={() => setSearch(ltr,'letter')}>{ltr.toUpperCase()}</NavDropdown.Item></Col>
+                    <Col key={k}><NavDropdown.Item key={ltr+k}  onClick={() => setSearchProps(ltr,'letter')}>{ltr.toUpperCase()}</NavDropdown.Item></Col>
                 ))}
                     </Row>
                 </NavDropdown>
@@ -56,7 +67,7 @@ const TopNav = (props) =>{
                     
                 {ingredients.map((ltr,k) => (
                     
-                    <Col key={ltr}><NavDropdown.Item key={ltr+k}  onClick={() => setSearch(ltr.toLocaleLowerCase(),'ingredient')}>{ltr}</NavDropdown.Item></Col>
+                    <Col key={ltr}><NavDropdown.Item key={ltr+k}  onClick={() => setSearchProps(ltr.toLocaleLowerCase(),'ingredient')}>{ltr}</NavDropdown.Item></Col>
                 ))}
                   
                   </Row>

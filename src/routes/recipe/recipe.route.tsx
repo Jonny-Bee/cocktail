@@ -1,14 +1,15 @@
-import { useContext } from "react";
+
 import { Container} from "react-bootstrap";
-import { CatContext } from "../../contexts/cat-context/cat-context.context";
+
 import { Card } from "react-bootstrap";
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
-import React, { Component }  from 'react';
+import React from 'react';
+import { useAppSelector} from '../../store/hooks';
 const Recipe = () =>{
 
-    const {selectedRecipe} = useContext(CatContext);
-  
+    
+        const selectedRecipe = useAppSelector((state) => state.recipe.value);
         const ingredients = [];
         const measures = [];
         let iEnd = true;

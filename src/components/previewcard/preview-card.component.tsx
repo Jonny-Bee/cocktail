@@ -5,13 +5,21 @@ import { useContext } from "react";
 import { Badge } from "react-bootstrap";
 import { DrinkRecipe } from "../../IO/dataIO";
 import React, { Component }  from 'react';
+import { useAppSelector, useAppDispatch } from '../../store/hooks';
+import { setRecipe } from '../../store/recipe.slice'; 
+import { useNavigate } from 'react-router-dom';
+
 type PreviewProps = {
     data:DrinkRecipe
 }
 const PreviewCard = ({data}:PreviewProps) => {
-    const {setRecipe} = useContext(CatContext);
+    const dispatch = useAppDispatch();
+    const navigate = useNavigate();
+
+    
     const handleClick = () =>{
-        setRecipe(data);
+        dispatch(setRecipe(data));
+        navigate('/recipe');
     }
     const insert = () => {if(data.strAlcoholic ==='Non alcoholic')
         return <Badge pill bg="light" text='dark' className='floating-badge'>Non-Alcoholic</Badge>;
