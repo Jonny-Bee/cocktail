@@ -52,6 +52,7 @@ export const searchCockTailsByLetter = (letter:string,onLoaded:(data:DrinkRecipe
         console.log(error);
     }
 }
+
 export const searchCockTails = (letter:string,onLoaded:(data:DrinkRecipe[]) => void) =>{
 
     try{

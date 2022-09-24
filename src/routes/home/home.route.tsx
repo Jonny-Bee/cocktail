@@ -3,7 +3,8 @@ import React  from 'react';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 
-import './home.style.css'
+import './home.style.css';
+
 const Home = () =>{
     return(
         <div >

@@ -10,7 +10,8 @@
 }
 
 .banner{
-    background-image: url('./banner2.jpeg');
+
+    background-image: url('./banner2.jpg');
     background-size: cover;
     background-position: right;
     min-height: 100vh;
