@@ -39,7 +39,7 @@ export interface DrinkRecipe  {
     strMeasure15?:string,
 }
 
-export const searchCockTailsByLetter = (letter:string,onLoaded:(data:DrinkRecipe[]) => void) =>{
+export const searchCockTailsByLetter = async (letter:string,onLoaded:(data:DrinkRecipe[]) => void) =>{
 
     try{
         console.log('loading...')
@@ -53,7 +53,7 @@ export const searchCockTailsByLetter = (letter:string,onLoaded:(data:DrinkRecipe
     }
 }
 
-export const searchCockTails = (letter:string,onLoaded:(data:DrinkRecipe[]) => void) =>{
+export const searchCockTails = async (letter:string,onLoaded:(data:DrinkRecipe[]) => void) =>{
 
     try{
         console.log('loading...')
@@ -67,7 +67,7 @@ export const searchCockTails = (letter:string,onLoaded:(data:DrinkRecipe[]) => v
     }
 }
 
-export const searchCockTailsByIngredient = (name:string,onLoaded:(data:DrinkRecipe[]) => void) =>{
+export const searchCockTailsByIngredient = async (name:string,onLoaded:(data:DrinkRecipe[]) => void) =>{
 
     try{
        fetch('https://www.thecocktaildb.com/api/json/v1/1/search.php?s=' + name)

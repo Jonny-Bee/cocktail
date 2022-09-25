@@ -1,11 +1,12 @@
 
-import { Container} from "react-bootstrap";
+import { Button, Container} from "react-bootstrap";
 
 import { Card } from "react-bootstrap";
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import React from 'react';
 import { useAppSelector} from '../../store/hooks';
+import { useNavigate } from "react-router-dom";
 const Recipe = () =>{
 
     
@@ -15,6 +16,7 @@ const Recipe = () =>{
         let iEnd = true;
         let mEnd = true;
         let i = 1;
+        const navigate = useNavigate();
         while(iEnd)
         {
            
@@ -47,6 +49,7 @@ const Recipe = () =>{
         }
         return(
             <Container className='mt-5'>
+            <Button className = 'mb-2' variant="primary" onClick={() => navigate('/list')}>back</Button>
             <Card className='mb-5 '>
                 <Card.Img variant="top" src={selectedRecipe!.strDrinkThumb} />
                 <Card.Body>
