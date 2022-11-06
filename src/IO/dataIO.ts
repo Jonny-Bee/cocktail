@@ -39,46 +39,34 @@ export interface DrinkRecipe  {
     strMeasure15?:string,
 }
 
-export const searchCockTailsByLetter = async (letter:string,onLoaded:(data:DrinkRecipe[]) => void) =>{
+export const searchCockTailsByLetter = async (letter:string,type:string):Promise<DrinkRecipe[]> =>{
 
-    try{
-        console.log('loading...')
-        fetch('https://www.thecocktaildb.com/api/json/v1/1/search.php?f=' + letter)
-        .then(res => res.json())
-        .then(data => {onLoaded(data.drinks)});
-    }
-    catch(error)
-    {
-        console.log(error);
-    }
+   const url = type ==='letter' ? 'https://www.thecocktaildb.com/api/json/v1/1/search.php?f=' : 'https://www.thecocktaildb.com/api/json/v1/1/search.php?s=';
+    console.log('loading...')
+    return await fetch(url + letter)
+    .then(res => res.json())
+    .then(data => data.drinks as DrinkRecipe[]);
+   
+    
 }
 
-export const searchCockTails = async (letter:string,onLoaded:(data:DrinkRecipe[]) => void) =>{
+export const searchCockTails = async (letter:string):Promise<DrinkRecipe[]> =>{
 
-    try{
+   
         console.log('loading...')
-        fetch('https://www.thecocktaildb.com/api/json/v1/1/search.php?s=' + letter)
+        return await fetch('https://www.thecocktaildb.com/api/json/v1/1/search.php?s=' + letter)
         .then(res => res.json())
-        .then(data => {onLoaded(data.drinks)});
-    }
-    catch(error)
-    {
-        console.log(error);
-    }
+        .then(data => data.drinks as DrinkRecipe[]);
+    
+   
 }
 
-export const searchCockTailsByIngredient = async (name:string,onLoaded:(data:DrinkRecipe[]) => void) =>{
+export const searchCockTailsByIngredient = async (name:string):Promise<DrinkRecipe[]> =>{
 
-    try{
-       fetch('https://www.thecocktaildb.com/api/json/v1/1/search.php?s=' + name)
+ 
+       return await fetch('https://www.thecocktaildb.com/api/json/v1/1/search.php?s=' + name)
        .then(res => res.json())
-       .then(data => {onLoaded(data.drinks)});
-        
-        
-    }
-    catch(error)
-    {
-        console.log(error);
-    }
-}
+        .then(data => data.drinks as DrinkRecipe[]);
+ 
 
+}

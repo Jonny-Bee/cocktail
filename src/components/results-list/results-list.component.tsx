@@ -10,30 +10,16 @@ import { useAppSelector } from '../../store/hooks';
 
 const ResultsList = () => {
 
-    const searchField = useAppSelector((state) => state.search.searchField);
-    const searchType = useAppSelector((state) => state.search.searchType);
-    const [drinks, setDrinks] = useState<DrinkRecipe[]>([]);
     
+    const [drinks, setDrinks] = useState<DrinkRecipe[]>([]);
+    const results = useAppSelector((state) => state.results.value)
+    
+    // lets get sagas to take care of these changes!!
     useEffect(() => {
       
-    const LoadDrinks = (cat:string,stype:string) => {
+    setDrinks(results!);
 
-        const f = (data:DrinkRecipe[]) =>{ 
-          if(data != null){
-            setDrinks(data);
-            
-          }
-        };
-        if(stype === 'letter')
-              searchCockTailsByLetter(cat,f);
-        else if(stype === 'ingredient')
-              searchCockTailsByIngredient(cat,f);
-        else
-            searchCockTails(cat,f);
-    };
-    return LoadDrinks(searchField!,searchType!);
-
-  },[searchField , searchType]);
+  },[results]);
 
 
     return(
