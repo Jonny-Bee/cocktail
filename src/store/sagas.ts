@@ -7,7 +7,7 @@ import {setResults} from './results'
 
 
 function* fetchRecipes(args:any):any{
-    console.log(args);
+    
     const getFields = getStore().search;
     const state = getFields;
     let data;
