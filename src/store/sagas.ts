@@ -6,7 +6,8 @@ import {setResults} from './results'
 
 
 
-function* fetchRecipes():any{
+function* fetchRecipes(args:any):any{
+    console.log(args);
     const getFields = getStore().search;
     const state = getFields;
     let data;
